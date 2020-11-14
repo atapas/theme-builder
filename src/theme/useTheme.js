@@ -16,5 +16,5 @@ export const useTheme = () => {
         setThemeLoaded(true);
     }, []);
     
-    return [theme, themeLoaded, setMode];
+    return {theme, themeLoaded, setMode};
 };

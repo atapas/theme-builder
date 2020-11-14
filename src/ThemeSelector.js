@@ -31,7 +31,7 @@ export default (props) => {
 
     const [data, setData] = useState(themesFromStore.data);
     const [themes, setThemes] = useState([]);
-    const [theme, themeLoaded, setMode] = useTheme();
+    const {setMode} = useTheme();
 
     const themeSwitcher = selectedTheme => {
         console.log(selectedTheme);

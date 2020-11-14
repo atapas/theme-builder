@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [theme, themeLoaded] = useTheme();
+  const {theme, themeLoaded} = useTheme();
   const [font,setFont] = useState(theme.font);
   
  useEffect(() => {
