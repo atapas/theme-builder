@@ -7,7 +7,7 @@ export const useTheme = () => {
 
     const setMode = mode => {
         window.localStorage.setItem('theme', mode)
-        setTheme(mode)
+        setTheme(mode);
     };
 
     useEffect(() => {
@@ -16,5 +16,5 @@ export const useTheme = () => {
         setThemeLoaded(true);
     }, []);
     
-    return {theme, themeLoaded, setMode};
+    return { theme, themeLoaded, setMode };
 };

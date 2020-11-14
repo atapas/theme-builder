@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import _ from 'lodash';
-import shortid from 'shortid';
 import {useTheme} from './theme/useTheme';
 import * as themesFromStore from './theme/schema.json';
 
@@ -27,6 +26,11 @@ const Wrapper = styled.li`
     border: 1px solid #000;
 `;
 
+const Header = styled.h2`
+    display: flex;
+    justify-content: space-around;
+`;
+
 export default (props) => {
 
     const [data, setData] = useState(themesFromStore.data);
@@ -36,6 +40,7 @@ export default (props) => {
     const themeSwitcher = selectedTheme => {
         console.log(selectedTheme);
         setMode(JSON.stringify(selectedTheme));
+        props.setter(JSON.parse(JSON.stringify(selectedTheme)));
     };
 
     useEffect(() => {
@@ -59,16 +64,16 @@ export default (props) => {
     }
 
     return (
-        <>
-            <h2>Theme Selector</h2>
+        <div>
+            <Header>Select a Theme from below</Header>
             <ul>
             {
                 themes.length > 0 && 
                     themes.map(theme =>(
-                        <ThemeCard theme={data[theme]} key={shortid.generate()} />
+                        <ThemeCard theme={data[theme]} key={data[theme].id} />
                     ))
             }
             </ul>
-        </>
+        </div>
     )
 }

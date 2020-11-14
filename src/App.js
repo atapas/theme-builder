@@ -7,37 +7,40 @@ import {useTheme} from './theme/useTheme';
 import ThemeSelector from './ThemeSelector';
 
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  margin: 5px auto 5px auto;
 `;
+
 
 function App() {
   const {theme, themeLoaded} = useTheme();
-  const [font,setFont] = useState(theme.font);
+  const [selectedTheme, setSelectedTheme] = useState(theme);
   
  useEffect(() => {
     WebFont.load({
       google: {
-        families: [theme.font]
-      },
-      fontinactive: function(familyName, fvd) {setFont(theme.font)},
-      active: function() {setFont(theme.font)}
+        families: [selectedTheme.font]
+      }
     });
   });
 
   useEffect(() => {
-    setFont(theme.font);
-  }, [themeLoaded])
+    setSelectedTheme(theme);
+  }, [themeLoaded]);
+
 
   return (
     <>
     {
-      themeLoaded && <ThemeProvider theme={ theme }>
+      themeLoaded && <ThemeProvider theme={ selectedTheme }>
         <GlobalStyles/>
-        <Container style={{fontFamily:font}}>
-          <h1>Hi, This is for test.. We will change things later!</h1>
-          <ThemeSelector />
+        <Container style={{fontFamily: selectedTheme.font}}>
+          <h1>Theme Builder</h1>
+          <p>
+            Hey, There! It's great when the control is with you. The theme builder
+            helps you building a theme of your choice and apply it to test live. Why
+            wait? Just give it a try.
+          </p>
+          <ThemeSelector setter={setSelectedTheme}/>
         </Container>
       </ThemeProvider>
     }
