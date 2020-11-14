@@ -1,25 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import styled, { ThemeProvider } from "styled-components";
+import WebFont from 'webfontloader';
+import { GlobalStyles } from './theme/GlobalStyles';
+import {useTheme} from './theme/useTheme';
+
+import ThemeSelector from './ThemeSelector';
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
 
 function App() {
+  const [theme, themeLoaded] = useTheme();
+  const [font,setFont] = useState(theme.font);
+  
+ useEffect(() => {
+    WebFont.load({
+      google: {
+        families: [theme.font]
+      },
+      fontinactive: function(familyName, fvd) {setFont(theme.font)},
+      active: function() {setFont(theme.font)}
+    });
+  });
+
+  useEffect(() => {
+    setFont(theme.font);
+  }, [themeLoaded])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {
+      themeLoaded && <ThemeProvider theme={ theme }>
+        <GlobalStyles/>
+        <Container style={{fontFamily:font}}>
+          <h1>Hi, This is for test.. We will change things later!</h1>
+          <ThemeSelector />
+        </Container>
+      </ThemeProvider>
+    }
+    </>
   );
 }
 
