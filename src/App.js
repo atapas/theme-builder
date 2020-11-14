@@ -35,6 +35,7 @@ function App() {
         <GlobalStyles/>
         <Container style={{fontFamily: selectedTheme.font}}>
           <h1>Theme Builder</h1>
+          <button className="btn">Create a Theme</button>
           <p>
             Hey, There! It's great when the control is with you. The theme builder
             helps you building a theme of your choice and apply it to test live. Why

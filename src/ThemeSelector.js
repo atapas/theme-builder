@@ -22,7 +22,7 @@ const Wrapper = styled.li`
     text-align: center;
     margin: 5px;
     border-radius: 4px;
-    height: 200px;
+    height: 100px;
     border: 1px solid #000;
 `;
 
