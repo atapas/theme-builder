@@ -7,6 +7,7 @@ import {useTheme} from './theme/useTheme';
 import ThemeSelector from './ThemeSelector';
 
 import Dialog from './Dialog';
+import CreateThemeContent from './CreateThemeContent';
 
 const Container = styled.div`
   margin: 5px auto 5px auto;
@@ -50,7 +51,7 @@ function App() {
           <button className="btn" onClick={ manageDialog }>Create a Theme</button>
           <Dialog 
             header="Create Theme"
-            body={<p>Body</p>}
+            body={ <CreateThemeContent /> }
             footer={<p>Footer</p>}
             open={ showDialog } 
             callback = { manageDialog }/>
