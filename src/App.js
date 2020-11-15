@@ -6,6 +6,8 @@ import {useTheme} from './theme/useTheme';
 
 import ThemeSelector from './ThemeSelector';
 
+import Dialog from './Dialog';
+
 const Container = styled.div`
   margin: 5px auto 5px auto;
 `;
@@ -14,6 +16,7 @@ const Container = styled.div`
 function App() {
   const {theme, themeLoaded} = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
+  const [showDialog, setShowDialog] = useState(false);
   
  useEffect(() => {
     WebFont.load({
@@ -27,6 +30,10 @@ function App() {
     setSelectedTheme(theme);
   }, [themeLoaded]);
 
+  const manageDialog = () => {
+    setShowDialog(!showDialog);
+  }
+
 
   return (
     <>
@@ -35,12 +42,18 @@ function App() {
         <GlobalStyles/>
         <Container style={{fontFamily: selectedTheme.font}}>
           <h1>Theme Builder</h1>
-          <button className="btn">Create a Theme</button>
           <p>
             Hey, There! It's great when the control is with you. The theme builder
             helps you building a theme of your choice and apply it to test live. Why
             wait? Just give it a try.
           </p>
+          <button className="btn" onClick={ manageDialog }>Create a Theme</button>
+          <Dialog 
+            header="Create Theme"
+            body={<p>Body</p>}
+            footer={<p>Footer</p>}
+            open={ showDialog } 
+            callback = { manageDialog }/>
           <ThemeSelector setter={setSelectedTheme}/>
         </Container>
       </ThemeProvider>
