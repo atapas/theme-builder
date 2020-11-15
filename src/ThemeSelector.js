@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import _ from 'lodash';
 import {useTheme} from './theme/useTheme';
-import * as themesFromStore from './theme/schema.json';
+import { getFromLS } from './utils/storage';
 
 const ThemedButton = styled.button`
     border: 0;
@@ -32,15 +32,15 @@ const Header = styled.h2`
 `;
 
 export default (props) => {
-
+    const themesFromStore = getFromLS('all-themes');
     const [data, setData] = useState(themesFromStore.data);
     const [themes, setThemes] = useState([]);
     const {setMode} = useTheme();
 
     const themeSwitcher = selectedTheme => {
         console.log(selectedTheme);
-        setMode(JSON.stringify(selectedTheme));
-        props.setter(JSON.parse(JSON.stringify(selectedTheme)));
+        setMode(selectedTheme);
+        props.setter(selectedTheme);
     };
 
     useEffect(() => {

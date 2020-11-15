@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
-import * as themes from './schema.json';
+import { setToLS, getFromLS } from '../utils/storage';
 
 export const useTheme = () => {
+    const themes = getFromLS('all-themes');
     const [theme, setTheme] = useState(themes.data.light);
     const [themeLoaded, setThemeLoaded] = useState(false);
 
     const setMode = mode => {
-        window.localStorage.setItem('theme', mode)
+        setToLS('theme', mode)
         setTheme(mode);
     };
 
     useEffect(() => {
-        const localTheme = window.localStorage.getItem('theme');
-        localTheme ? setTheme(JSON.parse(localTheme)) : setTheme(themes.data.light);
+        const localTheme = getFromLS('theme');
+        localTheme ? setTheme(localTheme) : setTheme(themes.data.light);
         setThemeLoaded(true);
     }, []);
     
