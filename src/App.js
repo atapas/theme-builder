@@ -15,14 +15,14 @@ const Container = styled.div`
 
 
 function App() {
-  const {theme, themeLoaded} = useTheme();
+  const {theme, themeLoaded, getFonts} = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
   const [showDialog, setShowDialog] = useState(false);
   
  useEffect(() => {
     WebFont.load({
       google: {
-        families: [selectedTheme.font]
+        families: getFonts()
       }
     });
   });
