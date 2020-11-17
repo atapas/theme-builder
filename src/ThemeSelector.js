@@ -47,6 +47,17 @@ export default (props) => {
         setThemes(_.keys(data));
     }, [data]);
 
+    useEffect(() => {
+        props.newTheme &&
+            updateThemeCard(props.newTheme);
+    }, [props.newTheme])
+
+    const updateThemeCard = theme => {
+        const key = _.keys(theme)[0];
+        const updated = {...data, [key]:theme[key]};
+        setData(updated);
+    }
+
     const ThemeCard = props => {
         return(
             <Wrapper style={{backgroundColor: `${data[_.camelCase(props.theme.name)].colors.body}`, 

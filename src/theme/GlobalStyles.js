@@ -14,6 +14,16 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   button.btn {
+    background-color: ${({ theme }) => theme.colors.button.background};
+    color: ${({ theme }) => theme.colors.button.text};
+  }
+
+  button.cancel {
+    background-color: #ff0000;
+    color: ${({ theme }) => theme.colors.button.text};
+  }
+
+  button {
     border: 0;
     display: inline-block;
     padding: 12px 24px;
@@ -21,7 +31,9 @@ export const GlobalStyles = createGlobalStyle`
     border-radius: 4px;
     margin-top: 5px;
     cursor: pointer;
-    background-color: ${({ theme }) => theme.colors.button.background};
-    color: ${({ theme }) => theme.colors.button.text};
+    background-color: #1064EA;
+    color: #FFFFFF;
+    font-family: ${({ theme }) => theme.font};
   }
+
 `;

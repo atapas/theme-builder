@@ -18,6 +18,7 @@ function App() {
   const {theme, themeLoaded, getFonts} = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
   const [showDialog, setShowDialog] = useState(false);
+  const [newTheme, setNewTheme] = useState();
   
  useEffect(() => {
     WebFont.load({
@@ -35,6 +36,11 @@ function App() {
     setShowDialog(!showDialog);
   }
 
+  const createTheme = newTheme => {
+    console.log(newTheme);
+    setShowDialog(false);
+    setNewTheme(newTheme);
+  }
 
   return (
     <>
@@ -51,11 +57,10 @@ function App() {
           <button className="btn" onClick={ manageDialog }>Create a Theme</button>
           <Dialog 
             header="Create Theme"
-            body={ <CreateThemeContent /> }
-            footer={<p>Footer</p>}
+            body={ <CreateThemeContent create={ createTheme }/> }
             open={ showDialog } 
             callback = { manageDialog }/>
-          <ThemeSelector setter={setSelectedTheme}/>
+          <ThemeSelector setter={setSelectedTheme} newTheme={newTheme}/>
         </Container>
       </ThemeProvider>
     }

@@ -57,12 +57,6 @@ const ModalBody = styled.div`
     padding: 2px 16px;
 `;
 
-const ModalFooter = styled.div`
-    padding: 2px 16px;
-    background-color:${({ theme }) => theme.colors.body};
-    color: ${({ theme }) => theme.colors.text};
-`;
-
 const Dialog = props => {
     const [show, setShow] = useState(false);
 
@@ -85,9 +79,6 @@ const Dialog = props => {
                 <ModalBody>
                     { props.body }
                 </ModalBody>
-                <ModalFooter>
-                    { props.footer }
-                </ModalFooter>
             </ModalContent>
         </Modal>
     )

@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 import styled from "styled-components";
+import { generate } from 'shortid';
+import _ from 'lodash';
 
 const Container = styled.div`
     padding: 10px;
@@ -26,13 +28,46 @@ const Preview = styled.div`
     padding: 5px;
 `;
 
-const CreateThemeContent = () => {
+const Footer = styled.div`
+    height: 45px;
+`;
+
+const CreateThemeContent = props => {
+    const [themeName, setThemeName] = useState('New Theme');
     const [bgColor, setBgColor] = useState('#Cf4307');
     const [txtColor, setTxtColor] = useState('#FFFFFF');
     const [btnBgColor, setBtnBgColor] = useState('#000000');
     const [btnTxtColor, setBtnTxtColor] = useState('#FFFFFF');
     const [linkColor, setLinkColor] = useState('#10BEEA');
     const [font, setFont] = useState('Roboto');
+
+    const defaultObj = {};
+    defaultObj[_.camelCase(themeName)] = {
+        "id": generate(),
+        "name": themeName,
+        "colors": {
+            "body": bgColor,
+            "text": txtColor,
+            "button": {
+                "text": btnBgColor,
+                "background": btnTxtColor
+            },
+            "link": {
+                "text": linkColor,
+                "opacity": 1
+            }
+        },
+        "font": font
+    };
+
+
+    const [newTheme, setNewTheme] = useState(defaultObj);
+
+    const changeName = event => {
+        event.preventDefault();
+        const name = event.target.value;
+        setThemeName(name);
+    }
 
     const changeBgColor = event => {
         event.preventDefault();
@@ -69,6 +104,10 @@ const CreateThemeContent = () => {
         const font = event.target.value;
         setFont(font);
     }
+
+    const createTheme = () => {
+        props.create(newTheme);
+    }
     
 
     return(
@@ -76,7 +115,7 @@ const CreateThemeContent = () => {
             <Section>
                 <Row>
                     <label htmlFor="th_name">Theme Name:</label> {' '}
-                    <input type="text" id="th_name" name="th_name"/>
+                    <input type="text" id="th_name" name="th_name" value={ themeName } onChange={(event) => changeName(event)}/>
                 </Row>
                 <Row>
                     <label htmlFor="bg_color">Background Color:</label> {' '}
@@ -117,7 +156,7 @@ const CreateThemeContent = () => {
                 <Preview style={{backgroundColor: bgColor, color: txtColor, fontFamily: font}}>
                     <p>
                         This is for preview only. Pick the color and font from the 
-                        left andside to see it working.
+                        left side to see it working.
                     </p>
                     <button className="btn" style={{backgroundColor:btnBgColor, color:btnTxtColor}}>
                         I am a Button
@@ -125,6 +164,10 @@ const CreateThemeContent = () => {
                     <a href="/" style={{color:linkColor}}>I am Link</a>
                 </Preview>
             </Section>
+
+            <Footer>
+                <button style={{float:'right'}} onClick={ createTheme }>Happy? Let's Create</button>
+            </Footer>
         </Container>
     )
 };
