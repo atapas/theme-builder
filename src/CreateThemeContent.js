@@ -150,8 +150,8 @@ const CreateThemeContent = props => {
                 <Row>
                     <label htmlFor="font">Select a Font:</label> {' '}
                     <select name="font" id="font" onChange={(event) => changeFont(event)} value={font}>
-                        {getFonts().map(font =>
-                            <option value={ font }>{ font }</option>
+                        {getFonts().map((font, index) =>
+                            <option value={ font } key={ index }>{ font }</option>
                         )}
                     </select>
                 </Row>

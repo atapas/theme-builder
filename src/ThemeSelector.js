@@ -16,14 +16,18 @@ const ThemedButton = styled.button`
 `;
 
 const Wrapper = styled.li`
-    display: inline-block;
-    width: 200px;
     padding: 48px;
     text-align: center;
-    margin: 5px;
     border-radius: 4px;
-    height: 100px;
     border: 1px solid #000;
+    list-style: none;
+`;
+
+const Container = styled.ul`
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 3rem;
 `;
 
 const Header = styled.h2`
@@ -77,14 +81,14 @@ export default (props) => {
     return (
         <div>
             <Header>Select a Theme from below</Header>
-            <ul>
+            <Container>
             {
                 themes.length > 0 && 
                     themes.map(theme =>(
                         <ThemeCard theme={data[theme]} key={data[theme].id} />
                     ))
             }
-            </ul>
+            </Container>
         </div>
     )
 }
