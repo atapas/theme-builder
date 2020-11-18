@@ -1,8 +1,9 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { generate } from 'shortid';
 import _ from 'lodash';
+import { useTheme } from './theme/useTheme';
 
 const Container = styled.div`
     padding: 10px;
@@ -33,6 +34,7 @@ const Footer = styled.div`
 `;
 
 const CreateThemeContent = props => {
+    const { getFonts } = useTheme();
     const [themeName, setThemeName] = useState('New Theme');
     const [bgColor, setBgColor] = useState('#Cf4307');
     const [txtColor, setTxtColor] = useState('#FFFFFF');
@@ -41,27 +43,35 @@ const CreateThemeContent = props => {
     const [linkColor, setLinkColor] = useState('#10BEEA');
     const [font, setFont] = useState('Roboto');
 
-    const defaultObj = {};
-    defaultObj[_.camelCase(themeName)] = {
-        "id": generate(),
-        "name": themeName,
-        "colors": {
-            "body": bgColor,
-            "text": txtColor,
-            "button": {
-                "text": btnBgColor,
-                "background": btnTxtColor
+    const [newTheme, setNewTheme] = useState({});
+
+
+    const getThemeObj = () => {
+        const themeObj = {};
+        themeObj[_.camelCase(themeName)] = {
+            "id": generate(),
+            "name": themeName,
+            "colors": {
+                "body": bgColor,
+                "text": txtColor,
+                "button": {
+                    "text": btnBgColor,
+                    "background": btnTxtColor
+                },
+                "link": {
+                    "text": linkColor,
+                    "opacity": 1
+                }
             },
-            "link": {
-                "text": linkColor,
-                "opacity": 1
-            }
-        },
-        "font": font
-    };
+            "font": font
+        };
+        return themeObj;
+    }
 
-
-    const [newTheme, setNewTheme] = useState(defaultObj);
+    useEffect(() => {
+        const updated = getThemeObj();
+        setNewTheme({...updated});
+    }, [bgColor, txtColor, btnBgColor, btnTxtColor, linkColor, font, themeName]);
 
     const changeName = event => {
         event.preventDefault();
@@ -140,13 +150,9 @@ const CreateThemeContent = props => {
                 <Row>
                     <label htmlFor="font">Select a Font:</label> {' '}
                     <select name="font" id="font" onChange={(event) => changeFont(event)} value={font}>
-                        <option value="Abel">Abel</option>
-                        <option value="Chilanka">Chilanka</option>
-                        <option value="Crimson Text">Crimson Text</option>
-                        <option value="Kufam">Kufam</option>
-                        <option value="Nunito Sans">Nunito Sans</option>
-                        <option value="Roboto">Roboto</option>
-                        <option value="Tinos">Tinos</option> 
+                        {getFonts().map(font =>
+                            <option value={ font }>{ font }</option>
+                        )}
                     </select>
                 </Row>
             </Section>
