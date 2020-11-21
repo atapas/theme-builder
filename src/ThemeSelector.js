@@ -28,6 +28,7 @@ const Container = styled.ul`
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 3rem;
+    padding: 10px;
 `;
 
 const Header = styled.h2`
