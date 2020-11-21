@@ -23,6 +23,16 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colors.button.text};
   }
 
+  button.cancel {
+    background-color: #ff0000;
+    color: ${({ theme }) => theme.colors.button.text};
+  }
+
+  button:disabled {
+    background-color: #ebebeb;
+    color: #333333;
+  }
+
   button {
     border: 0;
     display: inline-block;

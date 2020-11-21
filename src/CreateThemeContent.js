@@ -32,7 +32,7 @@ const Preview = styled.div`
 
 const CreateThemeContent = props => {
     const { getFonts } = useTheme();
-    const [themeName, setThemeName] = useState('New Theme');
+    const [themeName, setThemeName] = useState('');
     const [bgColor, setBgColor] = useState('#Cf4307');
     const [txtColor, setTxtColor] = useState('#FFFFFF');
     const [btnBgColor, setBtnBgColor] = useState('#000000');
@@ -121,14 +121,21 @@ const CreateThemeContent = props => {
     <>
         <button 
             style={{float:'right'}} 
-            onClick={ createTheme }>
+            onClick={ createTheme }
+            disabled={ themeName.trim().length === 0 }>
             Happy? Let's Create
         </button>
         <Container>
             <Section>
                 <Row>
                     <label htmlFor="th_name">Theme Name:</label> {' '}
-                    <input type="text" id="th_name" name="th_name" value={ themeName } onChange={(event) => changeName(event)}/>
+                    <input 
+                        type="text" 
+                        id="th_name" 
+                        name="th_name" 
+                        value={ themeName }
+                        placeholder="Specify a name" 
+                        onChange={(event) => changeName(event)}/>
                 </Row>
                 <Row>
                     <label htmlFor="bg_color">Background Color:</label> {' '}
