@@ -6,15 +6,16 @@ import _ from 'lodash';
 import { useTheme } from './theme/useTheme';
 
 const Container = styled.div`
-    padding: 10px;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 3rem;
 `;
 
 const Section = styled.div`
-    display:inline-block;
-    vertical-align:top;
-    margin-right:10px;
-    padding:10px;
-    width: 45%;
+    vertical-align: top;
+    margin-right: 10px;
+    padding: 10px;
 `;
 
 const Row = styled.div`
@@ -27,10 +28,6 @@ const Preview = styled.div`
     width: 100%;
     height: 200px;
     padding: 5px;
-`;
-
-const Footer = styled.div`
-    height: 45px;
 `;
 
 const CreateThemeContent = props => {
@@ -121,6 +118,12 @@ const CreateThemeContent = props => {
     
 
     return(
+    <>
+        <button 
+            style={{float:'right'}} 
+            onClick={ createTheme }>
+            Happy? Let's Create
+        </button>
         <Container>
             <Section>
                 <Row>
@@ -170,11 +173,8 @@ const CreateThemeContent = props => {
                     <a href="/" style={{color:linkColor}}>I am Link</a>
                 </Preview>
             </Section>
-
-            <Footer>
-                <button style={{float:'right'}} onClick={ createTheme }>Happy? Let's Create</button>
-            </Footer>
         </Container>
+    </>
     )
 };
 
