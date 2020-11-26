@@ -56,11 +56,11 @@ function App() {
           </p>
           <button className="btn" onClick={ manageDialog }>Create a Theme</button>
           <Dialog 
-            header="Create Theme"
+            header="Create a Theme"
             body={ <CreateThemeContent create={ createTheme }/> }
             open={ showDialog } 
             callback = { manageDialog }/>
-          <ThemeSelector setter={setSelectedTheme} newTheme={newTheme}/>
+          <ThemeSelector setter={ setSelectedTheme } newTheme={ newTheme }/>
         </Container>
       </ThemeProvider>
     }
