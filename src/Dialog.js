@@ -12,8 +12,14 @@ const Modal = styled.dialog`
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background: repeating-linear-gradient(
+        30deg,
+        rgba(24, 194, 236, 0.2),
+        rgba(24, 194, 236, 0.2) 1px,
+        rgba(24, 194, 236, 0.3) 1px,
+        rgba(24, 194, 236, 0.3) 20px
+    );
+    backdrop-filter: blur(1px);
 `;
 
 const animatetop = keyframes`

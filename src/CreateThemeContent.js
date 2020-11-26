@@ -31,36 +31,40 @@ const Preview = styled.div`
 `;
 
 const CreateThemeContent = props => {
+
+    const defaultTheme = {
+        themeName: "",
+        bgColor: "#Cf4307",
+        txtColor: "#FFFFFF",
+        btnBgColor: "#000000",
+        btnTxtColor: "#FFFFFF",
+        linkColor: "#10BEEA",
+        font: "Roboto"
+
+    };
     const { getFonts } = useTheme();
-    const [themeName, setThemeName] = useState('');
-    const [bgColor, setBgColor] = useState('#Cf4307');
-    const [txtColor, setTxtColor] = useState('#FFFFFF');
-    const [btnBgColor, setBtnBgColor] = useState('#000000');
-    const [btnTxtColor, setBtnTxtColor] = useState('#FFFFFF');
-    const [linkColor, setLinkColor] = useState('#10BEEA');
-    const [font, setFont] = useState('Roboto');
-
+    const [state, setState] = useState(defaultTheme);
+    
     const [newTheme, setNewTheme] = useState({});
-
 
     const getThemeObj = () => {
         const themeObj = {};
-        themeObj[_.camelCase(themeName)] = {
+        themeObj[_.camelCase(state.themeName)] = {
             "id": generate(),
-            "name": themeName,
+            "name": state.themeName,
             "colors": {
-                "body": bgColor,
-                "text": txtColor,
+                "body": state.bgColor,
+                "text": state.txtColor,
                 "button": {
-                    "text": btnBgColor,
-                    "background": btnTxtColor
+                    "text": state.btnBgColor,
+                    "background": state.btnTxtColor
                 },
                 "link": {
-                    "text": linkColor,
+                    "text": state.linkColor,
                     "opacity": 1
                 }
             },
-            "font": font
+            "font": state.font
         };
         return themeObj;
     }
@@ -68,51 +72,18 @@ const CreateThemeContent = props => {
     useEffect(() => {
         const updated = getThemeObj();
         setNewTheme({...updated});
-    }, [bgColor, txtColor, btnBgColor, btnTxtColor, linkColor, font, themeName]);
+    }, [state]);
 
-    const changeName = event => {
-        event.preventDefault();
-        const name = event.target.value;
-        setThemeName(name);
-    }
-
-    const changeBgColor = event => {
-        event.preventDefault();
-        const color = event.target.value;
-        setBgColor(color);
-    }
-
-    const changeTxtColor = event => {
-        event.preventDefault();
-        const color = event.target.value;
-        setTxtColor(color);
-    }
-
-    const changeBtnBgColor = event => {
-        event.preventDefault();
-        const color = event.target.value;
-        setBtnBgColor(color);
-    }
-
-    const changeBtnTxtColor = event => {
-        event.preventDefault();
-        const color = event.target.value;
-        setBtnTxtColor(color);
-    }
-
-    const changeLinkColor = event => {
-        event.preventDefault();
-        const color = event.target.value;
-        setLinkColor(color);
-    }
-
-    const changeFont = event => {
-        event.preventDefault();
-        const font = event.target.value;
-        setFont(font);
+    const handleChange = evt => {
+        const value = evt.target.value;
+        setState({
+            ...state,
+            [evt.target.name]: value
+        });
     }
 
     const createTheme = () => {
+        setState({...defaultTheme});
         props.create(newTheme);
     }
     
@@ -122,7 +93,7 @@ const CreateThemeContent = props => {
         <button 
             style={{float:'right'}} 
             onClick={ createTheme }
-            disabled={ themeName.trim().length === 0 }>
+            disabled={ state.themeName.trim().length === 0 }>
             Happy? Let's Create
         </button>
         <Container>
@@ -131,35 +102,35 @@ const CreateThemeContent = props => {
                     <label htmlFor="th_name">Theme Name:</label> {' '}
                     <input 
                         type="text" 
-                        id="th_name" 
-                        name="th_name" 
-                        value={ themeName }
+                        id="themeName" 
+                        name="themeName" 
+                        value={ state.themeName }
                         placeholder="Specify a name" 
-                        onChange={(event) => changeName(event)}/>
+                        onChange={ handleChange }/>
                 </Row>
                 <Row>
                     <label htmlFor="bg_color">Background Color:</label> {' '}
-                    <input type="color" id="bg_color" name="bg_color" value= { bgColor } onChange={(event) => changeBgColor(event)}/>
+                    <input type="color" id="bg_color" name="bgColor" value= { state.bgColor } onChange={ handleChange }/>
                 </Row>
                 <Row>
                     <label htmlFor="txt_color">Text Color:</label> {' '}
-                    <input type="color" id="txt_color" name="txt_color" value={ txtColor } onChange={(event) => changeTxtColor(event)}/>
+                    <input type="color" id="txt_color" name="txtColor" value={ state.txtColor } onChange={ handleChange }/>
                 </Row>
                 <Row>
                     <label htmlFor="btn_bg_color">Button Background Color:</label> {' '}
-                    <input type="color" id="btn_bg_color" name="btn_bg_color" value={ btnBgColor } onChange={(event) => changeBtnBgColor(event)}/>
+                    <input type="color" id="btn_bg_color" name="btnBgColor" value={ state.btnBgColor } onChange={ handleChange }/>
                 </Row>
                 <Row>
                     <label htmlFor="btn_txt_color">Button Text Color:</label> {' '}
-                    <input type="color" id="btn_txt_color" name="btn_txt_color" value={ btnTxtColor } onChange={(event) => changeBtnTxtColor(event)}/>
+                    <input type="color" id="btn_txt_color" name="btnTxtColor" value={ state.btnTxtColor } onChange={ handleChange }/>
                 </Row>
                 <Row>
                     <label htmlFor="link_color">Link Color:</label> {' '}
-                    <input type="color" id="link_color" name="link_color" value={ linkColor } onChange={(event) => changeLinkColor(event)}/>
+                    <input type="color" id="link_color" name="linkColor" value={ state.linkColor } onChange={ handleChange }/>
                 </Row>
                 <Row>
                     <label htmlFor="font">Select a Font:</label> {' '}
-                    <select name="font" id="font" onChange={(event) => changeFont(event)} value={font}>
+                    <select name="font" id="font" onChange={ handleChange } value={state.font}>
                         {getFonts().map((font, index) =>
                             <option value={ font } key={ index }>{ font }</option>
                         )}
@@ -169,15 +140,15 @@ const CreateThemeContent = props => {
 
             <Section>
                 <span><b>Preview</b></span>
-                <Preview style={{backgroundColor: bgColor, color: txtColor, fontFamily: font}}>
+                <Preview style={{backgroundColor: state.bgColor, color: state.txtColor, fontFamily: state.font}}>
                     <p>
                         This is for preview only. Pick the color and font from the 
                         left side to see it working.
                     </p>
-                    <button className="btn" style={{backgroundColor:btnBgColor, color:btnTxtColor}}>
+                    <button className="btn" style={{backgroundColor:state.btnBgColor, color:state.btnTxtColor, fontFamily: state.font}}>
                         I am a Button
                     </button> {'  '}
-                    <a href="/" style={{color:linkColor}}>I am Link</a>
+                    <a href="/" style={{color:state.linkColor, fontFamily: state.font}}>I am Link</a>
                 </Preview>
             </Section>
         </Container>
