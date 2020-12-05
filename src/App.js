@@ -48,10 +48,10 @@ function App() {
       themeLoaded && <ThemeProvider theme={ selectedTheme }>
         <GlobalStyles/>
         <Container style={{fontFamily: selectedTheme.font}}>
-          <h1>Theme Builder</h1>
+          <h1>Theming System</h1>
           <p>
-            Hey, There! It's great when the control is with you. The theme builder
-            helps you building a theme of your choice and apply it to test live. Why
+            Hey, There! It's great when the control is with you. The theming system
+            helps you in building a theme of your choice and apply it to test live. Why
             wait? Just give it a try.
           </p>
           <button className="btn" onClick={ manageDialog }>Create a Theme</button>

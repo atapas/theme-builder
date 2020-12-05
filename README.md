@@ -1,5 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Theming System
+👋 Hey, There! 
 
+The theming system helps you in building a theme of your choice and apply it to test live. Why wait? Just give it a try.
+
+# How does it work?
+
+You can switch between the available themes.
+
+<img src='static/Demo_1.gif' art='switch' />
+
+You can also create a theme of your own and save it.
+
+<img src='static/Demo_2.gif' art='save' />
+
+# A live demo?
+
+Why not? You can access a Live demo from here:
+
+> [https://theme-builder.netlify.app/](https://theme-builder.netlify.app/)
+
+# What's inside?
+
+We are using the following tools & technologies,
+
+- [React](https://reactjs.org/)
+- [styled-components](https://styled-components.com/docs/basics)
+- [Browser's Localstorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+
+# 🌟 Want to Motivate?
+
+Who doesn't need motivations? Want to motivate? Give this repo a Star (🌟).
+
+# How to Run this project locally?
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## Available Scripts
 
 In the project directory, you can run:
