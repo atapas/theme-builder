@@ -19,6 +19,13 @@ Why not? You can access a Live demo from here:
 
 > [https://theme-builder.netlify.app/](https://theme-builder.netlify.app/)
 
+# 👍 Want to Motivate?
+
+Who doesn't need motivations? Want to motivate? Give this repo a Star (🌟).
+
+## Many Thanks to all the Stargazers who has supported this project with stars(⭐)
+[![Stargazers repo roster for @atapas/theme-builder](https://reporoster.com/stars/atapas/theme-builder)](https://github.com/atapas/theme-builder/stargazers)
+
 # 🥡 What's inside?
 
 We are using the following tools & technologies,
@@ -26,10 +33,6 @@ We are using the following tools & technologies,
 - [React](https://reactjs.org/)
 - [styled-components](https://styled-components.com/docs/basics)
 - [Browser's Localstorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
-
-# 👍 Want to Motivate?
-
-Who doesn't need motivations? Want to motivate? Give this repo a Star (🌟).
 
 # 🏃🏿‍ How to Run this project locally?
 
