@@ -1,5 +1,7 @@
 # Theming System
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![License - MIT](https://img.shields.io/badge/License-MIT-blue)](#license)
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 👋 Hey, There! 
@@ -131,3 +133,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## License
+
+Released under [MIT](/LICENSE) by [@atapas](https://github.com/atapas).
