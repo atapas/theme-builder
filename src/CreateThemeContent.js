@@ -148,7 +148,7 @@ const CreateThemeContent = props => {
                     <button className="btn" style={{backgroundColor:state.btnBgColor, color:state.btnTxtColor, fontFamily: state.font}}>
                         I am a Button
                     </button> {'  '}
-                    <a href="/" style={{color:state.linkColor, fontFamily: state.font}}>I am Link</a>
+                    <a href="#" style={{color:state.linkColor, fontFamily: state.font}}>I am Link</a>
                 </Preview>
             </Section>
         </Container>
