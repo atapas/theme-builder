@@ -37,6 +37,10 @@ We are using the following tools & technologies,
 - [styled-components](https://styled-components.com/docs/basics)
 - [Browser's Localstorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
+# 🏗️ How to build? Read this step-by-step tutorial
+
+- [Theming and Theme Switching with React and styled-components](https://css-tricks.com/theming-and-theme-switching-with-react-and-styled-components/)
+
 # 🏃🏿‍ How to Run this project locally?
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
