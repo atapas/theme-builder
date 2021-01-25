@@ -1,6 +1,6 @@
 # Theming System
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 👋 Hey, There! 
 
@@ -123,6 +123,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://tapasadhikary.com"><img src="https://avatars.githubusercontent.com/u/3633137?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tapas Adhikary</b></sub></a><br /><a href="https://github.com/atapas/theme-builder/commits?author=atapas" title="Code">💻</a> <a href="#blog-atapas" title="Blogposts">📝</a></td>
     <td align="center"><a href="https://github.com/chinmaykunkikar"><img src="https://avatars.githubusercontent.com/u/6230769?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chinmay Kunkikar</b></sub></a><br /><a href="https://github.com/atapas/theme-builder/issues?q=author%3Achinmaykunkikar" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://jadenpadua.com"><img src="https://avatars.githubusercontent.com/u/46204970?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jaden Padua</b></sub></a><br /><a href="https://github.com/atapas/theme-builder/commits?author=jadenpadua" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://youtube.com/eddiejaoude?sub_confirmation=1"><img src="https://avatars.githubusercontent.com/u/624760?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eddie Jaoude</b></sub></a><br /><a href="https://github.com/atapas/theme-builder/issues?q=author%3Aeddiejaoude" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
